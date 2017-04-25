@@ -14,4 +14,5 @@ void ForEach(ActionType actions[], unsigned timeout)
 	for (unsigned index = 0; index < NumberOfActions; ++index) workItems[index] = CreateThreadpoolWork(Launch<ActionType>, actions + index, nullptr);
 	for (unsigned index = 0; index < NumberOfActions; ++index) SubmitThreadpoolWork(workItems[index]);
 	for (unsigned index = 0; index < NumberOfActions; ++index) WaitForThreadpoolWorkCallbacks(workItems[index], false);
+	for (unsigned index = 0; index < NumberOfActions; ++index) CloseThreadpoolWork(workItems[index]);
 }
